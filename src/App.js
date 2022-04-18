@@ -16,7 +16,7 @@ function App() {
 
   useEffect(() => {
     axios.get(_baseUrl).then((response) => setData(response.data));
-    setIsLoading(true);
+    setIsLoading(false);
   }, []);
 
   return (
