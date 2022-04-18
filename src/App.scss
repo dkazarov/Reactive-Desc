@@ -1,5 +1,8 @@
 @import '~bootstrap/scss/bootstrap';
+@import '/node_modules/normalize.css/normalize.css';
 
-h1 {
-  color: rgb(255, 145, 0);
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
