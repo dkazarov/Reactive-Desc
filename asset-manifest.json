@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/dkazarov/Reactive-Desc/static/css/main.24add36c.css",
+    "main.js": "/dkazarov/Reactive-Desc/static/js/main.f800598a.js",
+    "index.html": "/dkazarov/Reactive-Desc/index.html",
+    "main.24add36c.css.map": "/dkazarov/Reactive-Desc/static/css/main.24add36c.css.map",
+    "main.f800598a.js.map": "/dkazarov/Reactive-Desc/static/js/main.f800598a.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.24add36c.css",
+    "static/js/main.f800598a.js"
+  ]
+}
