@@ -11,11 +11,10 @@ function App() {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  const _baseUrl =
-    'http://www.filltext.com/?rows=32&id={...|1000}&firstName={firstName}&lastName={lastName}&email={email}&phone={phone|(xxx)xxx-xx-xx}&address={addressObject}&description={lorem|32}';
+  const _baseUrl = 'https://dummyjson.com/users?limit=100';
 
   useEffect(() => {
-    axios.get(_baseUrl).then((response) => setData(response.data));
+    axios.get(_baseUrl).then((response) => setData(response.data.users));
     setIsLoading(false);
   }, []);
 
