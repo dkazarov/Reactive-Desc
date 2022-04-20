@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { nanoid } from 'nanoid';
 
@@ -7,12 +7,12 @@ import Table from 'react-bootstrap/Table';
 import { SortIconDown, SortIconUp } from './SortIcon/SortIcon';
 
 const TableContacts = ({ data, setData, sortDirection, setSortDirection }) => {
+  const [fieldData, setFieldData] = useState('');
   //Sort Columns
   const sortData = (field) => {
+    // Sort Data
     setSortDirection((sortDirection = !sortDirection));
-
     const copyData = [...data].sort((a, b) => (a[field] > b[field] ? 1 : -1));
-
     if (!sortDirection) {
       setData(copyData.reverse());
     }
@@ -20,33 +20,44 @@ const TableContacts = ({ data, setData, sortDirection, setSortDirection }) => {
     return setData(copyData);
   };
 
+  // Function component
+  const ArrowSort = () => {
+    return sortDirection ? <SortIconDown /> : <SortIconUp />;
+  };
+
+  const sortArrowDirection = (field) => {
+    sortData(field);
+    setFieldData(field);
+    console.log(field);
+  };
+
   return (
     <Table>
       <thead>
         <tr>
-          <th onClick={() => sortData('id')}>
+          <th onClick={() => sortArrowDirection('id')}>
             id
-            {sortDirection ? <SortIconDown /> : <SortIconUp cla />}
+            {fieldData === 'id' ? <ArrowSort /> : null}
           </th>
-          <th onClick={() => sortData('firstName')}>
+          <th onClick={() => sortArrowDirection('firstName')}>
             First Name
-            {sortDirection ? <SortIconDown /> : <SortIconUp cla />}
+            {fieldData === 'firstName' ? <ArrowSort /> : null}
           </th>
-          <th onClick={() => sortData('lastName')}>
+          <th onClick={() => sortArrowDirection('lastName')}>
             Last Name
-            {sortDirection ? <SortIconDown /> : <SortIconUp cla />}
+            {fieldData === 'lastName' ? <ArrowSort /> : null}
           </th>
-          <th onClick={() => sortData('age')}>
+          <th onClick={() => sortArrowDirection('age')}>
             Age
-            {sortDirection ? <SortIconDown /> : <SortIconUp cla />}
+            {fieldData === 'age' ? <ArrowSort /> : null}
           </th>
-          <th onClick={() => sortData('email')}>
+          <th onClick={() => sortArrowDirection('email')}>
             Email
-            {sortDirection ? <SortIconDown /> : <SortIconUp cla />}
+            {fieldData === 'email' ? <ArrowSort /> : null}
           </th>
-          <th onClick={() => sortData('phone')}>
+          <th onClick={() => sortArrowDirection('phone')}>
             Phone
-            {sortDirection ? <SortIconDown /> : <SortIconUp cla />}
+            {fieldData === 'phone' ? <ArrowSort /> : null}
           </th>
         </tr>
       </thead>
