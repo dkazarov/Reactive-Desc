@@ -4,6 +4,8 @@ import { nanoid } from 'nanoid';
 
 import Table from 'react-bootstrap/Table';
 
+import { SortIconDown, SortIconUp } from './SortIcon/SortIcon';
+
 const TableContacts = ({ data, setData, sortDirection, setSortDirection }) => {
   //Sort Columns
   const sortData = (field) => {
@@ -22,12 +24,30 @@ const TableContacts = ({ data, setData, sortDirection, setSortDirection }) => {
     <Table>
       <thead>
         <tr>
-          <th onClick={() => sortData('id')}>id</th>
-          <th onClick={() => sortData('firstName')}>First Name</th>
-          <th onClick={() => sortData('lastName')}>Last Name</th>
-          <th onClick={() => sortData('age')}>Age</th>
-          <th onClick={() => sortData('email')}>Email</th>
-          <th onClick={() => sortData('phone')}>Phone</th>
+          <th onClick={() => sortData('id')}>
+            id
+            {sortDirection ? <SortIconDown /> : <SortIconUp cla />}
+          </th>
+          <th onClick={() => sortData('firstName')}>
+            First Name
+            {sortDirection ? <SortIconDown /> : <SortIconUp cla />}
+          </th>
+          <th onClick={() => sortData('lastName')}>
+            Last Name
+            {sortDirection ? <SortIconDown /> : <SortIconUp cla />}
+          </th>
+          <th onClick={() => sortData('age')}>
+            Age
+            {sortDirection ? <SortIconDown /> : <SortIconUp cla />}
+          </th>
+          <th onClick={() => sortData('email')}>
+            Email
+            {sortDirection ? <SortIconDown /> : <SortIconUp cla />}
+          </th>
+          <th onClick={() => sortData('phone')}>
+            Phone
+            {sortDirection ? <SortIconDown /> : <SortIconUp cla />}
+          </th>
         </tr>
       </thead>
       <tbody xs={6}>
