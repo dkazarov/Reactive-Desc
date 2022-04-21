@@ -2,7 +2,7 @@ import React from 'react';
 
 export const SortIconDown = () => {
   return (
-    <div style={{ marginLeft: '5px', display: 'flex', alignItems: 'center', flexWrap: 'no-wrap' }}>
+    <div style={{ marginLeft: '5px', display: 'inline' }}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="16"
@@ -18,7 +18,7 @@ export const SortIconDown = () => {
 
 export const SortIconUp = () => {
   return (
-    <div style={{ marginLeft: '5px', display: 'flex', alignItems: 'center' }}>
+    <div style={{ marginLeft: '5px', display: 'inline' }}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="16"
