@@ -13,7 +13,7 @@ function MyVerticallyCenteredModal(props) {
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          Користувач: {props.userinfo.firstName} {props.userinfo.lastName}
+          Користувач з Id: {props.userinfo.id}
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
