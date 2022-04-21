@@ -7,7 +7,12 @@ import MyVerticallyCenteredModal from '../Modal/MyVerticallyCenteredModal';
 
 import { SortIconDown, SortIconUp } from './SortIcon/SortIcon';
 
-const TableContacts = ({ data, setData, sortDirection, setSortDirection }) => {
+const TableContacts = ({
+  data,
+  setData,
+  sortDirection,
+  setSortDirection,
+}) => {
   const [fieldData, setFieldData] = useState('');
   const [modalShow, setModalShow] = React.useState(false);
   const [userInfo, setUserInfo] = useState('');
