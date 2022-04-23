@@ -1,5 +1,8 @@
 # Contacts Desc
 
-## Functional: Sort Up/Down
+## Functional:
+
+- sort Up/Down
+- Pagination
 
 Libraries: axios, react-bootstrap, nanoid

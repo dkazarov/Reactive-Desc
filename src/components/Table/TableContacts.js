@@ -14,6 +14,7 @@ const TableContacts = ({
   setSortDirection,
   firstPage,
   lastPage,
+  filteredData,
 }) => {
   const [fieldData, setFieldData] = useState('');
   const [modalShow, setModalShow] = React.useState(false);
