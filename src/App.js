@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import Loader from './components/Loader/Loader';
 import TableContacts from './components/Table/TableContacts';
-import Pagination from './components/Pagination/Pagination';
+import PaginationPage from './components/Pagination/PaginationPage';
 
 import axios from 'axios';
 
@@ -16,15 +16,16 @@ function App() {
   // Sort
   const [sortDirection, setSortDirection] = useState(false);
   // Pagination
-  const [curentPage, setCurrentPage] = useState(1);
-  const [paginationPageCount] = useState(15);
-  const lastCurrentPageIndex = curentPage * paginationPageCount;
-  const firstCurrentPageIndex = lastCurrentPageIndex - paginationPageCount;
-  const currentPage = data.slice(firstCurrentPageIndex, lastCurrentPageIndex);
+  const [limitUsers, setLimitUsers] = useState(5);
+  const [activePage, setActivePage] = useState(1);
+  const lastPage = activePage * limitUsers;
+  const firstPage = lastPage - limitUsers;
+  // const curentNumberPage = data.slice(firstPage, lastPage);
 
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  console.log(lastPage);
 
-  const _baseUrl = 'https://dummyjson.com/users?limit=100';
+  const _baseUrl = 'https://dummyjson.com/users';
+  // const _baseUrl = 'https://dummyjson.com/users?limit=100';
 
   useEffect(() => {
     const getData = async () => {
@@ -40,7 +41,7 @@ function App() {
     };
 
     getData();
-  }, []);
+  }, [limitUsers]);
 
   return (
     <div className="container">
@@ -48,22 +49,20 @@ function App() {
         <Loader />
       ) : (
         <TableContacts
-          data={currentPage}
+          data={data}
           setData={setData}
           sortDirection={sortDirection}
           setSortDirection={setSortDirection}
+          firstPage={firstPage}
+          lastPage={lastPage}
         />
       )}
-      {data && (
-        <Pagination
-          data={data.length}
-          paginationPageCount={paginationPageCount}
-          paginate={paginate}
-          setCurrentPage={setCurrentPage}
-          curentPage={curentPage}
-          paginate={paginate}
-        />
-      )}
+      <PaginationPage
+        activePage={activePage}
+        setActivePage={setActivePage}
+        limitUsers={limitUsers}
+        data={data}
+      />
     </div>
   );
 }
