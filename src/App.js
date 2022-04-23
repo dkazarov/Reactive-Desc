@@ -17,12 +17,14 @@ function App() {
   // Sort
   const [sortDirection, setSortDirection] = useState(false);
   // Pagination
-  const [limitUsers, setLimitUsers] = useState(8);
+  const [limitUsers] = useState(10);
   const [activePage, setActivePage] = useState(1);
   const lastPage = activePage * limitUsers;
   const firstPage = lastPage - limitUsers;
-
-  console.log(lastPage);
+  // Search
+  const [searchValue, setSearchValue] = useState('');
+  const [filteredData, setfilteredData] = useState(data);
+  const filteredCount = filteredData.length;
 
   const _baseUrl = 'https://dummyjson.com/users?limit=100';
 
@@ -48,9 +50,16 @@ function App() {
         <Loader />
       ) : (
         <>
-          <Search />
-          <TableContacts
+          <Search
             data={data}
+            filteredData={filteredData}
+            searchValue={searchValue}
+            setSearchValue={setSearchValue}
+            setfilteredData={setfilteredData}
+            filteredCount={filteredCount}
+          />
+          <TableContacts
+            data={filteredData}
             setData={setData}
             sortDirection={sortDirection}
             setSortDirection={setSortDirection}
@@ -63,7 +72,7 @@ function App() {
         activePage={activePage}
         setActivePage={setActivePage}
         limitUsers={limitUsers}
-        data={data}
+        data={filteredData}
       />
     </div>
   );
