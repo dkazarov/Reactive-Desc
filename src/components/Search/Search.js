@@ -7,27 +7,26 @@ const Search = ({
   searchValue,
   setSearchValue,
   setfilteredData,
-  filteredCount,
+  filteredData,
 }) => {
   const search = (searchText) => {
     const filteredValue = data.filter((items) =>
       items.firstName.includes(searchText)
     );
     setfilteredData(filteredValue);
-    console.log(filteredValue.length);
+    setSearchValue('');
   };
 
   return (
     <>
       <div className="d-flex mt-3">
         <Form.Label htmlFor="inputPassword5">
-          Знайдено {filteredCount} співпадінь
+          Знайдено {filteredData.length} співпадінь
         </Form.Label>
       </div>
-      <div>
+      <div className="d-flex">
         <Form.Control
-          type="password"
-          id="inputPassword5"
+          type="text"
           aria-describedby="passwordHelpBlock"
           onChange={(e) => setSearchValue(e.target.value)}
           value={searchValue}
