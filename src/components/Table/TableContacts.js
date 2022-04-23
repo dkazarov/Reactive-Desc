@@ -7,7 +7,14 @@ import MyVerticallyCenteredModal from '../Modal/MyVerticallyCenteredModal';
 
 import { SortIconDown, SortIconUp } from './SortIcon/SortIcon';
 
-const TableContacts = ({ data, setData, sortDirection, setSortDirection }) => {
+const TableContacts = ({
+  data,
+  setData,
+  sortDirection,
+  setSortDirection,
+  firstPage,
+  lastPage,
+}) => {
   const [fieldData, setFieldData] = useState('');
   const [modalShow, setModalShow] = React.useState(false);
   const [userInfo, setUserInfo] = useState('');
@@ -31,7 +38,6 @@ const TableContacts = ({ data, setData, sortDirection, setSortDirection }) => {
   const sortArrowDirection = (field) => {
     sortData(field);
     setFieldData(field);
-    console.log(field);
   };
 
   const detailModal = (items) => {
@@ -70,7 +76,7 @@ const TableContacts = ({ data, setData, sortDirection, setSortDirection }) => {
         </tr>
       </thead>
       <tbody xs={6}>
-        {data.map((items) => (
+        {data.slice(firstPage, lastPage).map((items) => (
           <tr key={nanoid()} onClick={() => detailModal(items)}>
             <td>{items.id}</td>
             <td>{items.firstName}</td>
