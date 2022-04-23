@@ -24,7 +24,6 @@ function App() {
   // Search
   const [searchValue, setSearchValue] = useState('');
   const [filteredData, setfilteredData] = useState(data);
-  const filteredCount = filteredData.length;
 
   const _baseUrl = 'https://dummyjson.com/users?limit=100';
 
@@ -34,6 +33,7 @@ function App() {
         setIsLoading(true);
         const res = await axios.get(_baseUrl);
         setData(res.data.users);
+        setfilteredData(res.data.users);
         setIsLoading(false);
       } catch (e) {
         setIsLoading(false);
@@ -56,7 +56,6 @@ function App() {
             searchValue={searchValue}
             setSearchValue={setSearchValue}
             setfilteredData={setfilteredData}
-            filteredCount={filteredCount}
           />
           <TableContacts
             data={filteredData}
