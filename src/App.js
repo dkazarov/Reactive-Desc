@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Loader from './components/Loader/Loader';
 import TableContacts from './components/Table/TableContacts';
 import PaginationPage from './components/Pagination/PaginationPage';
+import Search from './components/Search/Search';
 
 import axios from 'axios';
 
@@ -16,16 +17,14 @@ function App() {
   // Sort
   const [sortDirection, setSortDirection] = useState(false);
   // Pagination
-  const [limitUsers, setLimitUsers] = useState(5);
+  const [limitUsers, setLimitUsers] = useState(8);
   const [activePage, setActivePage] = useState(1);
   const lastPage = activePage * limitUsers;
   const firstPage = lastPage - limitUsers;
-  // const curentNumberPage = data.slice(firstPage, lastPage);
 
   console.log(lastPage);
 
-  const _baseUrl = 'https://dummyjson.com/users';
-  // const _baseUrl = 'https://dummyjson.com/users?limit=100';
+  const _baseUrl = 'https://dummyjson.com/users?limit=100';
 
   useEffect(() => {
     const getData = async () => {
@@ -48,14 +47,17 @@ function App() {
       {isLoading ? (
         <Loader />
       ) : (
-        <TableContacts
-          data={data}
-          setData={setData}
-          sortDirection={sortDirection}
-          setSortDirection={setSortDirection}
-          firstPage={firstPage}
-          lastPage={lastPage}
-        />
+        <>
+          <Search />
+          <TableContacts
+            data={data}
+            setData={setData}
+            sortDirection={sortDirection}
+            setSortDirection={setSortDirection}
+            firstPage={firstPage}
+            lastPage={lastPage}
+          />
+        </>
       )}
       <PaginationPage
         activePage={activePage}
