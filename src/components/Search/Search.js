@@ -38,10 +38,9 @@ const Search = ({
             : 'Знайдено 0 співпадінь'}
         </Form.Label>
       </div>
-      <div className="d-flex justify-content-between">
+      <div className="d-flex justify-content-between mb-3">
         <Form.Control
           type="text"
-          aria-describedby="passwordHelpBlock"
           onChange={(e) => setSearchValue(e.target.value)}
           value={searchValue}
         />
