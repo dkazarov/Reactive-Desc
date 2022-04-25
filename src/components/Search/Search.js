@@ -29,13 +29,16 @@ const Search = ({
   return (
     <>
       <div className="d-flex mt-3">
-        <Form.Label htmlFor="inputPassword5">
+        <Form.Label
+          htmlFor="inputPassword5"
+          className="d-flex justify-content-center"
+        >
           {onClickSearchTrigger
             ? 'Знайдено ' + filteredData.length + ' співпадінь'
             : 'Знайдено 0 співпадінь'}
         </Form.Label>
       </div>
-      <div className="d-flex">
+      <div className="d-flex justify-content-between">
         <Form.Control
           type="text"
           aria-describedby="passwordHelpBlock"

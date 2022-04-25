@@ -4,6 +4,7 @@ import Loader from './components/Loader/Loader';
 import TableContacts from './components/Table/TableContacts';
 import PaginationPage from './components/Pagination/PaginationPage';
 import Search from './components/Search/Search';
+import AddUser from './components/AddUser/AddUser';
 
 import axios from 'axios';
 
@@ -57,6 +58,7 @@ function App() {
             setSearchValue={setSearchValue}
             setfilteredData={setfilteredData}
           />
+          <AddUser />
           <TableContacts
             data={filteredData}
             setData={setData}
