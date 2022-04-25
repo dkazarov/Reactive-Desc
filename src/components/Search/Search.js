@@ -9,13 +9,13 @@ const Search = ({
   setfilteredData,
   filteredData,
 }) => {
-  const [onClickSearch, setOnClickSearch] = useState(true);
+  const [onClickSearchTrigger, setOnClickSearchTrigger] = useState(false);
 
   const search = (searchText) => {
     if (!searchText) {
       setfilteredData(data);
-      setOnClickSearch(true);
-      return
+      setOnClickSearchTrigger(false);
+      return;
     }
 
     const filteredValue = data.filter((items) =>
@@ -23,16 +23,16 @@ const Search = ({
     );
     setfilteredData(filteredValue);
     setSearchValue('');
-    setOnClickSearch(false);
+    setOnClickSearchTrigger(true);
   };
 
   return (
     <>
       <div className="d-flex mt-3">
         <Form.Label htmlFor="inputPassword5">
-          {onClickSearch
-            ? 'Знайдено 0 співпадінь'
-            : 'Знайдено ' + filteredData.length + ' співпадінь'}
+          {onClickSearchTrigger
+            ? 'Знайдено ' + filteredData.length + ' співпадінь'
+            : 'Знайдено 0 співпадінь'}
         </Form.Label>
       </div>
       <div className="d-flex">
